@@ -2,7 +2,7 @@
 Photo editing web application built on top Wesbos Javascript 30 CSS Variables tutorial
 Grayscale added
 
-#Future Features:
+# Future Features:
 ADD 
 1. Select File (url / file location / drag and drop) 
 2. Brightness()|contrast() | drop-shadow() | hue-rotate() | invert() | opacity() | saturate() | sepia() | url(); 
