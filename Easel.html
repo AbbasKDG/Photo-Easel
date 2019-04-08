@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Photo Easel</title>
   </head>
 
@@ -16,8 +17,8 @@
         name="spacing"
         type="range"
         min="0"
-        max="100"
-        value="10"
+        max="200"
+        value="100"
         data-sizing="px"
       />
 
@@ -27,9 +28,20 @@
         name="blur"
         id="blur"
         min="0"
-        max="50"
-        value="100"
+        max="7"
+        value="1"
         data-sizing="px"
+      />
+
+      <label for="grayscale">Saturation</label>
+      <input
+        type="range"
+        name="grayscale"
+        id="grayscale"
+        min="0"
+        max="100"
+        value="50"
+        data-sizing="%"
       />
 
       <label for="base">Base</label>
@@ -40,18 +52,25 @@
     <style>
       :root {
         --spacing: 100px;
-        --blur: 5px;
+        --blur: 1px;
         --color: black;
+        --grayscale: 50%;
       }
+
+      * {
+        box-sizing: border-box;
+      }
+
       .hl {
         color: var(--base);
       }
 
       img {
-        width: 60%;
+        /* height: 80vh; */
         padding: var(--spacing);
         background: var(--base);
-        filter: blur(var(--blur));
+        filter: blur(var(--blur)) grayscale(var(--grayscale));
+        /* filter: grayscale(40%); */
       }
       body {
         text-align: center;
@@ -62,6 +81,7 @@
       }
       /* push div down */
       .tools {
+        flex-wrap: wrap;
         margin-bottom: 0.8em;
       }
 
@@ -70,16 +90,13 @@
       }
     </style>
 
-    <!-- Script -->
     <script>
-      //grab all inputs
       const inputs = document.querySelectorAll(".tools input");
 
       function handleUpdate() {
         const suffix = this.dataset.sizing || "";
 
         document.documentElement.style.setProperty(
-          // root property name and property value
           `--${this.name}`,
           this.value + suffix
         );
