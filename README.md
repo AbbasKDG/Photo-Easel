@@ -1,2 +1,2 @@
 # Photo-Easel
-Photo editing we application 
+Photo editing web application built on top Wesbos Javascript 30 CSS Variables tutorial
